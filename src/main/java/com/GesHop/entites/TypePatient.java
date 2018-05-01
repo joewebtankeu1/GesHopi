@@ -10,7 +10,7 @@ public class TypePatient implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
-	private String Code_typePatient;
+	private String CodeTypePatient;
 	private String LibellePatient;
 	
 	public TypePatient() {
@@ -18,16 +18,16 @@ public class TypePatient implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TypePatient(String code_typePatient) {
+	public TypePatient(String codetypePatient) {
 		super();
-		Code_typePatient = code_typePatient;
+		CodeTypePatient = codetypePatient;
 	}
 	
-	public String getCode_typePatient() {
-		return Code_typePatient;
+	public String getCodetypePatient() {
+		return CodeTypePatient;
 	}
-	public void setCode_typePatient(String code_typePatient) {
-		Code_typePatient = code_typePatient;
+	public void setCodetypePatient(String codetypePatient) {
+		CodeTypePatient = codetypePatient;
 	}
 	public String getLibellePatient() {
 		return LibellePatient;
