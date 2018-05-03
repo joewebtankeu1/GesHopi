@@ -19,7 +19,7 @@ public class GroupePatient implements Serializable {
 	private Date DateCreationGroupePatient; 
 	@ManyToOne
 	@JoinColumn(name="codePatient")
-	private Pateint patient;  
+	private Patient patient;  
 	@ManyToOne
 	@JoinColumn(name="IdGroupe")
 	private Groupe groupe;
@@ -59,10 +59,10 @@ public class GroupePatient implements Serializable {
 	public void setDateCreationGroupePatient(Date dateCreationGroupePatient) {
 		DateCreationGroupePatient = dateCreationGroupePatient;
 	}
-	public Pateint getPatient() {
+	public Patient getPatient() {
 		return patient;
 	}
-	public void setPatient(Pateint patient) {
+	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
 	public Groupe getGroupe() {

@@ -25,7 +25,7 @@ public abstract class OperationsPatient implements Serializable  {
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name="Codepateint")
-	private Pateint patient;
+	private Patient patient;
 	public OperationsPatient() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,10 +53,10 @@ public abstract class OperationsPatient implements Serializable  {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	public Pateint getPatient() {
+	public Patient getPatient() {
 		return patient;
 	}
-	public void setPatient(Pateint patient) {
+	public void setPatient(Patient patient) {
 		this.patient = patient;
 	} 
 }

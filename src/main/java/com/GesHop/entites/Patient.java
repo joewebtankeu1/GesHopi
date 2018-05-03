@@ -1,14 +1,18 @@
 package com.GesHop.entites;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @Entity
-public class Pateint implements Serializable {
+public class Patient implements Serializable {
 	
 	@Id
 	private String NumCentralPatient; 
@@ -17,9 +21,6 @@ public class Pateint implements Serializable {
 	private Date DateNaisPatient;
 	private String  LieuNaisPatient;
 	private Long SexePatient;
-	@ManyToOne
-	@JoinColumn(name="CodeCivilite")
-	private Civilite civilite;
 	private String EmprunteDigid;
 	private String SigneBiometrie;
 	private Date DatesCreationPatient;
@@ -27,13 +28,6 @@ public class Pateint implements Serializable {
 	private String NomPrenomPatient;
 	private String NomPatientMask;
 	private String CodeBarrePatient; 
-	@ManyToOne
-	@JoinColumn(name="CodeTypePatient")
-	private TypePatient typePatient; 
-	
-	@ManyToOne
-	@JoinColumn(name="CodeProfession")
-	private Profession profession;
 	private Long IsInfoACompleter;
 	private String Adresse;
 	private String Telephone;
@@ -43,14 +37,27 @@ public class Pateint implements Serializable {
 	private String Region;
 	private String Ville;
 	private String Quartier;
-	
-	public Pateint() {
+	@ManyToOne
+	@JoinColumn(name="CodeCivilite")
+	private Civilite civilite;
+	@ManyToOne
+	@JoinColumn(name="CodeTypePatient")
+	private TypePatient typePatient; 
+	@ManyToOne
+	@JoinColumn(name="CodeProfession")
+	private Profession profession;
+	@OneToMany(mappedBy="Patient")
+	private Collection<OperationsPatient> operationsPatient;
+	@ManyToMany
+	@JoinTable(name="Groupe_Patient")
+	private Collection<Groupe> groupes;
+	public Patient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Pateint(String numCentralPatient, String nomPateint, String prenomPatient, Date dateNaisPatient,
-			String lieuNaisPatient, Long sexePatient, Civilite civilite, String nomPrenomPatient,
+	public Patient(String numCentralPatient, String nomPateint, String prenomPatient, Date dateNaisPatient,
+			String lieuNaisPatient, Long sexePatient, String nomPrenomPatient,
 			TypePatient typePatient, String telephone) {
 		super();
 		NumCentralPatient = numCentralPatient;
@@ -59,7 +66,7 @@ public class Pateint implements Serializable {
 		DateNaisPatient = dateNaisPatient;
 		LieuNaisPatient = lieuNaisPatient;
 		SexePatient = sexePatient;
-		this.civilite = civilite;
+		
 		NomPrenomPatient = nomPrenomPatient;
 		this.typePatient = typePatient;
 		Telephone = telephone;
@@ -173,6 +180,14 @@ public class Pateint implements Serializable {
 		return CodeBarrePatient;
 	}
 
+	public Collection<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(Collection<Groupe> groupes) {
+		this.groupes = groupes;
+	}
+
 	public void setCodeBarrePatient(String codeBarrePatient) {
 		CodeBarrePatient = codeBarrePatient;
 	}
@@ -263,6 +278,14 @@ public class Pateint implements Serializable {
 
 	public void setQuartier(String quartier) {
 		Quartier = quartier;
+	}
+
+	public Collection<OperationsPatient> getOperationsPatient() {
+		return operationsPatient;
+	}
+
+	public void setOperationsPatient(Collection<OperationsPatient> operationsPatient) {
+		this.operationsPatient = operationsPatient;
 	}
 
 }

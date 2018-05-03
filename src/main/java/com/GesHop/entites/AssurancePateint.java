@@ -21,7 +21,7 @@ public class AssurancePateint implements Serializable{
 	private Date Datecreation;  
 	@ManyToOne
 	@JoinColumn(name="NumCentralPatient")
-	private Pateint patient;
+	private Patient patient;
 	@ManyToOne
 	@JoinColumn(name="CodeTiers")
 	private Tiers tiers;
@@ -75,10 +75,10 @@ public class AssurancePateint implements Serializable{
 	public void setDatecreation(Date datecreation) {
 		Datecreation = datecreation;
 	}
-	public Pateint getPatient() {
+	public Patient getPatient() {
 		return patient;
 	}
-	public void setPatient(Pateint patient) {
+	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
 	public Tiers getTiers() {
